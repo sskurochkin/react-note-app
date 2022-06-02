@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Todo from "./Todo";
+import Note from "./Note";
 import "./index.scss";
 
 const App = () => {
 
 	return (
-		<div className='todo-list'>
-			<Todo/> 
+		<div className='note-list'>
+			<Note/>
 				
 		</div>
 	);

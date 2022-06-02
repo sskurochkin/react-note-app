@@ -1,16 +1,19 @@
 import React from "react";
 
-const TodoItem = (props) => {
+const NoteItem = (props) => {
 	return (
-		<div className='todo-item'>
+		<div className='note-item'>
 			<span onClick={() => props.setCheckedTodo(props.todo.id)}>
 				<input type='checkbox' checked={props.todo.completed} onChange={()=>{}}/>
 			<p>{props.todo.text}</p>
 			</span>
-			<button>Edit</button>
-			<button>Delete</button>
+			<div className="btns">
+				<button>Edit</button>
+				<button onClick={()=>{props.remove(props.todo)}}>Delete</button>
+			</div>
+
 		</div>
 	);
 };
 
-export default TodoItem;
+export default NoteItem;
