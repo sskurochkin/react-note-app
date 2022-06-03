@@ -47,25 +47,41 @@ hr{
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 	span{
 		display: flex;
+		flex: 1 1 auto;
+	}
+	p{
+		margin: 5px;
+	}
+	input{
+		padding: 5px 10px;
 	}
 
 }
 .btns{
 	margin-left: 20px;
 	flex: 0 0 auto;
-	button{
+	button {
 		margin: 0 2px;
 		background-color: #ace1fc;
 		border: 1px solid #eeeeee;
 		border-radius: 4px;
 		padding: 4px 8px;
 		cursor: pointer;
-		&:hover{
+
+		&:hover {
 			opacity: .8;
+
 		}
-		&:last-of-type{
-			background-color: #e05757;
-		}
+	}
+	.delete-btn{
+		background-color: #e05757;
+	}
+
+	.save-btn{
+		background-color: #10b524;
+	}
+	.cancel-btn{
+		background-color: #c6c6c6;
 	}
 }
 
