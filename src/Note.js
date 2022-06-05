@@ -14,6 +14,7 @@ function Note() {
 	const [editId, setEditId] = useState(null)
 
 
+	//добавление тега из поля ввода заметки
 	const addNewTag = (str) => {
 
 		let reg = /\B(#[a-z0-9]+|#[а-я0-9]+)(\s|$)/ig;
@@ -23,38 +24,37 @@ function Note() {
 			//удаление одинаковых тегов если такие есть в строке
 			let filteredRes = [...new Set(res.map((str) => {
 				return str.trim()
-			}))].map((elem)=>{
-				if(tag.find(item=>item.name === elem)){
+			}))].map((elem) => {
+				if (tag.find(item => item.name === elem)) {
 
 					return null
 				} else return elem
 
-			}).filter(elem=>elem!== null)
+			}).filter(elem => elem !== null)
 			//
 
-				let newArr = () => {
-					let arr = []
-					for (let i = 0; i < filteredRes.length; i++) {
-						let customObject = {
-							id: uuidv4(3),
-							name: filteredRes[i]
-						}
-						arr.push(customObject)
+			let newArr = () => {
+				let arr = []
+				for (let i = 0; i < filteredRes.length; i++) {
+					let customObject = {
+						id: uuidv4(3),
+						name: filteredRes[i]
 					}
-					return arr
+					arr.push(customObject)
 				}
+				return arr
+			}
 
-				setTag([...tag, ...newArr()])
-
-
-
+			setTag([...tag, ...newArr()])
 		}
 	}
 
+	//удаление тега
 	const removeTag = (item) => {
 		setTag(tag.filter(t => t.id !== item.id))
 	}
 
+	//выбор тега для фильтра заметок
 	const activeTagHandler = (tag) => {
 		let str = tag.name
 
@@ -63,10 +63,9 @@ function Note() {
 		} else {
 			setActiveTag('')
 		}
-
 	}
 
-
+	//добавление тега из поля ввода тега
 	const addTagHandler = (e) => {
 		const value = e.target.value;
 		setTagName(value);
@@ -85,6 +84,7 @@ function Note() {
 		}
 	}
 
+	//добавление заметки
 	const addNoteHandler = (e) => {
 		const value = e.target.value;
 		setName(value);
@@ -96,31 +96,19 @@ function Note() {
 			]);
 			setName("");
 		}
-	};
+	}
 
+	//удаление заметки
 	const removeNote = (note) => {
 		setNotes(notes.filter(t => t.id !== note.id))
 	}
 
-	// const setCheckedTodo = (id) => {
-	// 	const newArr = notes.map((note) => {
-	// 		if (note.id === id) {
-	// 			note.completed = !note.completed;
-	// 		}
-	// 		return note
-	// 	});
-	// 	setNotes(newArr);
-	// };
-
-	const handleEditClick = (id) => {
-		setEditId(id)
+	//редактирование или отмена редактирования заметки
+	const handleEditClick = (value) => {
+		setEditId(value)
 	}
 
-	const handleCancelClick = () => {
-		setEditId(null)
-	}
-
-
+	//сохранение редактированной заметки
 	const handleSaveClick = (id, text) => {
 		addNewTag(text)
 		const editNotes = notes.map((elem) => {
@@ -131,10 +119,10 @@ function Note() {
 		})
 
 		setNotes(editNotes)
-		handleCancelClick()
+		handleEditClick(null)
 	}
 
-
+	//рендер заметок в зависимости от активного фильтра по тегу
 	const renderNotes = () => {
 
 		if (activeTag && notes.length) {
@@ -149,7 +137,6 @@ function Note() {
 							save={handleSaveClick}
 							edit={editId}
 							editHandler={handleEditClick}
-							cancel={handleCancelClick}
 						/>)
 				)
 		}
@@ -162,17 +149,13 @@ function Note() {
 				save={handleSaveClick}
 				edit={editId}
 				editHandler={handleEditClick}
-				cancel={handleCancelClick}
 			/>
 		))
-
 	}
-
 
 	return (
 		<>
 			<h1>Note App</h1>
-
 			<div className="wrapper">
 				<h2>Tags:</h2>
 				<input
@@ -204,9 +187,7 @@ function Note() {
 				/>
 				<hr/>
 				{renderNotes()}
-
 			</div>
-
 		</>
 	);
 }

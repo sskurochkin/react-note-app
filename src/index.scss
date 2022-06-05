@@ -45,7 +45,7 @@ hr{
 	margin-bottom: 8px;
 	width: 100%;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-	span{
+	&>span{
 		display: flex;
 		flex: 1 1 auto;
 	}
@@ -56,6 +56,14 @@ hr{
 		padding: 5px 10px;
 	}
 
+}
+.note-tag{
+	display: inline-block;
+	padding: 4px;
+	background-color: #ace1fc;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 }
 .btns{
 	margin-left: 20px;
