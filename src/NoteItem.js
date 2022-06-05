@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import EditNote from "./EditNote";
 
 
 
 const NoteItem = (props) => {
 
-	// const [editText, setEditText] = useState(props.note.text)
 
 	const renderText = () =>{
 		const notesTag = /\B(#[a-z0-9]+|#[а-я0-9]+)(\s|$)/ig;
