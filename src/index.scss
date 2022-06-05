@@ -20,7 +20,7 @@ hr{
 .note-list {
 	background-color: rgb(238, 238, 238);
 	margin: auto;
-	width: 50%;
+	max-width: 500px;
 	display: flex;
 	flex-direction: column;
 	justify-content: stretch;
@@ -33,6 +33,9 @@ hr{
 		/* The third layer */ 0 20px 0 -10px #eee,
 		/* The third layer shadow */ 0 20px 1px -9px rgba(0, 0, 0, 0.15);
 	padding: 30px;
+	@media (max-width: 568px) {
+		padding: 15px;
+	}
 }
 .note-item {
 	border-radius: 10px;
